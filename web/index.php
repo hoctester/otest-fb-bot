@@ -32,8 +32,8 @@ $app->post('/callback', function (Request $request) use ($app) {
 
 	$myPath = str_replace("index.php", "", __FILE__);
 
-	$data01 = "data desu\r\n";
-	foreach ($_SERVER as $key => $val) {
+	$data01 = "data desu\r\n\r\n";
+	foreach ($_POST as $key => $val) {
 		$data01 .= $key . ":" . $val . "\r\n";
 	}
 		
