@@ -30,6 +30,8 @@ $app->post('/callback', function (Request $request) use ($app) {
     $body = json_decode($request->getContent(), true);
     $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
 
+	mail('yonemasa01@di.pdx.ne.jp', 'My Subject', $text);
+	
 	$txt = date("Y-m-d H:i:s") . "  " . $msg . "\r\n";
 	$fp = fopen("test.txt", "a+");
 	fwrite($fp, $txt);
