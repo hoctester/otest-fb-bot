@@ -31,10 +31,15 @@ $app->post('/callback', function (Request $request) use ($app) {
     $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
 
 	$myPath = str_replace("index.php", "", __FILE__);
-	
+
+	$data01 = "データ↓\r\n";
+	foreach ($_REQUEST as $key => $val) {
+		$data01 .= $key . ":" . $val . "\r\n";
+	}
+		
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
-	fwrite($fp, $txt);
+	fwrite($fp, $data01);
 	fclose($fp);
     
     foreach ($body['entry'] as $obj) {
