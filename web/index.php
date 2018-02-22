@@ -32,7 +32,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 
 	$myPath = str_replace("index.php", "", __FILE__);
 	
-	$txt = date("Y-m-d H:i:s") . "  " . $msg . "\r\n";
+	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
 	fwrite($fp, $txt);
 	fclose($fp);
