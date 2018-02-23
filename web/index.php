@@ -36,7 +36,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 //	foreach ($body['entry'][0]['changes'][0]['value'] as $key => $val) {
 //		$data01 .= $key . ":" . $val . "\r\n";
 //	}
-	$data01 .= multi_implode($body, ":");
+	$data01 .= multi_implode($body, "\r\n");
 	
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
@@ -75,11 +75,11 @@ $app->run();
 function multi_implode($array, $glue) {
     $ret = '';
 
-    foreach ($array as $item) {
+    foreach ($array as $key => $item) {
         if (is_array($item)) {
             $ret .= multi_implode($item, $glue) . $glue;
         } else {
-            $ret .= $item . $glue;
+            $ret .= $key . ":" . $item . $glue;
         }
     }
 
