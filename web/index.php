@@ -39,6 +39,10 @@ $app->post('/callback', function (Request $request) use ($app) {
 //	}
 	$data01 .= multi_implode($body, "\r\n");
 	
+	if (str_pos($data01, "object:instagram") === false) {
+		$data01 = '';
+	}
+		
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
 	fwrite($fp, $data01);
