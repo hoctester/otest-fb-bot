@@ -39,7 +39,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 //	}
 	$data01 .= multi_implode($body, "\r\n");
 	
-	if (str_pos($data01, "object:instagram") === false) {
+	if (str_pos("object:instagram", $data01) === false) {
 		$data01 = '';
 	}
 		
