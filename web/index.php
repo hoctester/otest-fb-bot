@@ -28,7 +28,8 @@ $app->get('/callback', function (Request $request) use ($app) {
 $app->post('/callback', function (Request $request) use ($app) {
     // Let's hack from here!
     $body = json_decode($request->getContent(), true);
-    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
+//    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
+    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.12/']);
 
 	$myPath = str_replace("index.php", "", __FILE__);
 
