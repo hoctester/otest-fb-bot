@@ -39,11 +39,11 @@ $app->post('/callback', function (Request $request) use ($app) {
 //	}
 	$data01 .= multi_implode($body, "\r\n");
 	
-//	if (str_pos($data01, "instagram") === false) {
-//		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
-//	}
+	if (strpos($data01, "instagram") === false) {
+		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+	}
 		
-	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
+//	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
 	fwrite($fp, $data01);
 	fclose($fp);
@@ -89,10 +89,5 @@ function multi_implode($array, $glue) {
     }
 
     $ret = substr($ret, 0, 0-strlen($glue));
-
-	if (strpos($ret, "instagram") === false) {
-		$ret = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
-	}
-
-	return $ret;
+    return $ret;
 }
