@@ -40,7 +40,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 	$data01 .= multi_implode($body, "\r\n");
 	
 	if (str_pos($data01, "instagram") === false) {
-		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+//		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
 	}
 		
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
