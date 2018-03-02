@@ -34,14 +34,14 @@ $app->post('/callback', function (Request $request) use ($app) {
 	$myPath = str_replace("index.php", "", __FILE__);
 
 	$data01 = "\r\n\r\n--------------------- data desu\r\n\r\n";
-	foreach ($body['entry'][0]['changes'][0]['value'] as $key => $val) {
-		$data01 .= $key . ":" . $val . "\r\n";
-	}
-//	$data01 .= multi_implode($body, "\r\n");
-	
-//	if (str_pos($data01, "instagram") === false) {
-//		$data01 .= '@@@\r\n';
+//	foreach ($body['entry'][0]['changes'][0]['value'] as $key => $val) {
+//		$data01 .= $key . ":" . $val . "\r\n";
 //	}
+	$data01 .= multi_implode($body, "\r\n");
+	
+	if (str_pos($data01, "instagram") === false) {
+		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+	}
 		
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
