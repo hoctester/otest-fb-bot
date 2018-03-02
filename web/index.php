@@ -37,11 +37,11 @@ $app->post('/callback', function (Request $request) use ($app) {
 	foreach ($body['entry'][0]['changes'][0]['value'] as $key => $val) {
 		$data01 .= $key . ":" . $val . "\r\n";
 	}
-	$data01 .= multi_implode($body, "\r\n");
+//	$data01 .= multi_implode($body, "\r\n");
 	
-	if (str_pos($data01, "instagram") === false) {
-		$data01 .= '@@@\r\n';
-	}
+//	if (str_pos($data01, "instagram") === false) {
+//		$data01 .= '@@@\r\n';
+//	}
 		
 	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
 	$fp = fopen($myPath . "test.txt", "a+");
