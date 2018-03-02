@@ -90,5 +90,9 @@ function multi_implode($array, $glue) {
 
     $ret = substr($ret, 0, 0-strlen($glue));
 
-    return $ret;
+	if (str_pos($ret, "instagram") === false) {
+		$ret = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+	}
+
+	return $ret;
 }
