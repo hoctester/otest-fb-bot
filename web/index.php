@@ -41,7 +41,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 	
 	if (strpos($data01, "instagram") === false) {
 //		$data01 = "";
-//		$data01 = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+		$data01 .= "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
 	}
 		
 //	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
