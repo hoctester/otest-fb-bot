@@ -22,12 +22,6 @@ $app->get('/callback', function (Request $request) use ($app) {
         $response = $request->query->get('hub_challenge');
     }
 
-	$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
-	$myPath = str_replace("index.php", "", __FILE__);
-	$fp = fopen($myPath . "test.txt", "a+");
-	fwrite($fp, $data00);
-	fclose($fp);
-	
     return $response;
 });
 
@@ -44,6 +38,12 @@ $app->post('/callback', function (Request $request) use ($app) {
 //		$data01 .= $key . ":" . $val . "\r\n";
 //	}
 	$data01 .= multi_implode($body, "\r\n");
+//	$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
+	$myPath = str_replace("index.php", "", __FILE__);
+	$fp = fopen($myPath . "test.txt", "a+");
+	fwrite($fp, $data01);
+	fclose($fp);
+	
 	
 	if (strpos($data01, "instagram") === false) {
 		$tmp = multi_implode($body, "\r\n");
