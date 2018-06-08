@@ -15,6 +15,11 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 $app->before(function (Request $request) use($bot) {
     // TODO validation
 });
+$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
+	$myPath = str_replace("index.php", "", __FILE__);
+	$fp = fopen($myPath . "test.txt", "a+");
+	fwrite($fp, $data00);
+	fclose($fp);
 
 $app->get('/callback', function (Request $request) use ($app) {
     $response = "";
@@ -52,9 +57,9 @@ $app->post('/callback', function (Request $request) use ($app) {
 	}
 		
 //	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
-	$fp = fopen($myPath . "test.txt", "a+");
-	fwrite($fp, $data01);
-	fclose($fp);
+//	$fp = fopen($myPath . "test.txt", "a+");
+//	fwrite($fp, $data01);
+//	fclose($fp);
     
     foreach ($body['entry'] as $obj) {
         $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
