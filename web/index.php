@@ -42,13 +42,13 @@ $app->post('/callback', function (Request $request) use ($app) {
 	if (strpos($data01, "instagram") === false) {
 		$tmp = multi_implode($body, "\r\n");
 
-//		if (strpos($tmp, ":messages") !== false) {
+		if (strpos($data01, "object:page") === false) {
 		
 		//$params = http_build_query(json_decode(file_get_contents('php://input'), true));
 
 			$data01 = $tmp . "\r\n\r\n";
 			$data01 .= "\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
-//		}
+		}
 	}
 		
 //	$txt = date("Y-m-d H:i:s") . "  " . $text . "\r\n";
