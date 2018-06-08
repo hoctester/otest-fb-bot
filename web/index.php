@@ -61,7 +61,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 //	$fp = fopen($myPath . "test.txt", "a+");
 //	fwrite($fp, $data01);
 //	fclose($fp);
-    
+	
     foreach ($body['entry'] as $obj) {
         $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
 
@@ -98,7 +98,7 @@ function multi_implode($array, $glue) {
         if (is_array($item)) {
             $ret .= multi_implode($item, $glue) . $glue;
         } else {
-            $ret .= $key . ":" . $item . $glue;
+            $ret .= $key . ":" . mb_convert_encoding($item, "UTF-8") . $glue;
         }
     }
 
