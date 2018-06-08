@@ -41,6 +41,9 @@ $app->post('/callback', function (Request $request) use ($app) {
 	
 	if (strpos($data01, "instagram") === false) {
 		$data01 = "";
+$params = http_build_query(json_decode(file_get_contents('php://input'), true));
+		$data01 .= $params . "\r\n\r\n";
+
 		$data01 .= "\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
 	}
 		
