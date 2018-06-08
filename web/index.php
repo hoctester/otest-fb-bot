@@ -70,14 +70,15 @@ $app->post('/callback', function (Request $request) use ($app) {
             $from = $m['sender']['id'];
             $text = $m['message']['text'];
 
-            if ($text) {
+            if ($text == '天気') {
                 $path = sprintf('me/messages?access_token=%s', getenv('FACEBOOK_PAGE_ACCESS_TOKEN'));
                 $json = [
                     'recipient' => [
                         'id' => $from, 
                     ],
                     'message' => [
-                        'text' => sprintf('%sじゃーない！', $text), 
+//                        'text' => sprintf('%sじゃーない！', $text), 
+                        'text' => '晴れるかもしれないし雨かもしれない。', 
                     ],
                 ];
                 $client->request('POST', $path, ['json' => $json]);
