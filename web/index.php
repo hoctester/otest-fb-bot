@@ -42,8 +42,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 	$data01 .= "\r\n--------------------- \r\n";
 	$data01 .= print_r($body, true);
 	$data01 .= "\r\n--------------------- \r\n";
-$aaa = getallheaders();
-	//	$data01 .= print_r(getallheaders(), true);
+	$data01 .= print_r($_SERVER, true);
 //	$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
 	$myPath = str_replace("index.php", "", __FILE__);
 	$fp = fopen($myPath . "test.txt", "a+");
