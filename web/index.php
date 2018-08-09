@@ -32,8 +32,6 @@ $app->post('/callback', function (Request $request) use ($app) {
 //    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.12/']);
     $client = new Client(['base_uri' => 'https://graph.facebook.com/v3.1/']);
 
-ob_start(); var_dump($body); $aaa = my_logger(ob_get_clean());	
-
 	$myPath = str_replace("index.php", "", __FILE__);
 
 	$data01 = "\r\n\r\n--------------------- data desu\r\n\r\n";
@@ -42,7 +40,7 @@ ob_start(); var_dump($body); $aaa = my_logger(ob_get_clean());
 //	}
 	$data01 .= multi_implode($body, "\r\n");
 	$data01 .= "\r\n--------------------- \r\n";
-	$data01 .= $aaa;
+	$data01 .= print_r($body, true);
 //	$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
 	$myPath = str_replace("index.php", "", __FILE__);
 	$fp = fopen($myPath . "test.txt", "a+");
