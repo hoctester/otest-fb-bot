@@ -39,6 +39,8 @@ $app->post('/callback', function (Request $request) use ($app) {
 //		$data01 .= $key . ":" . $val . "\r\n";
 //	}
 	$data01 .= multi_implode($body, "\r\n");
+	$data01 .= "\r\n--------------------- \r\n";
+	$data01 .= $body;
 //	$data00 = $request->query->get('hub_verify_token') . '\r\n\r\n';
 	$myPath = str_replace("index.php", "", __FILE__);
 	$fp = fopen($myPath . "test.txt", "a+");
@@ -53,8 +55,8 @@ $app->post('/callback', function (Request $request) use ($app) {
 		
 		//$params = http_build_query(json_decode(file_get_contents('php://input'), true));
 
-			$data01 = $tmp . "\r\n\r\n";
-			$data01 .= "\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
+//			$data01 = $tmp . "\r\n\r\n";
+//			$data01 .= "\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n";
 		}
 	}
 		
