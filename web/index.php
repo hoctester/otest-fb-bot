@@ -28,6 +28,11 @@ $app->get('/callback', function (Request $request) use ($app) {
 $app->post('/callback', function (Request $request) use ($app) {
     // Let's hack from here!
     $body = json_decode($request->getContent(), true);
+
+// ログファイル名
+$g_log_name = "./" . date("Ymd") . ".log";
+error_log(var_export($body, true), 3, $g_log_name);
+
 //    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
 //    $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.12/']);
     $client = new Client(['base_uri' => 'https://graph.facebook.com/v3.1/']);
